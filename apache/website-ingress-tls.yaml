@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: website-with-tls
+  annotations:
+spec:
+  # Assume key and certificate are available with "/CN=web.training.clastix.io"
+  # openssl req -x509 -nodes -days 365 -newkey rsa:4096 \
+  #      -keyout web-tls.key \
+  #      -out web-tls.crt \
+  #      -subj "/CN=web.training.clastix.io"
+  #
+  # Also assume web-tls-secret already exists in the current namespace
+  # kubectl create secret tls web-tls-secret --cert=web-tls.crt --key=web-tls.key
+  tls:
+  - hosts:
+    - web.training.clastix.io
+    secretName: web-tls-secret
+  rules:
+  - host: web.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: website
+          servicePort: 80

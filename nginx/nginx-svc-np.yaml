@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-np
+  labels:
+  namespace:
+spec:
+  ports:
+  - protocol: TCP
+    port: 9090
+    targetPort: 80
+    #nodePort: 30000 #this means we leave the system to choose the right port on thee node
+  selector:
+    run: nginx
+  type: NodePort
+  sessionAffinity: 

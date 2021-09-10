@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: 
+  name: nginx
+spec:
+  rules:
+  - host: jellyfish.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx
+          servicePort: 9090

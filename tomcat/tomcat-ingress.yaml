@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace:
+  name: taas
+spec:
+  rules:
+  - host: tomcat.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: taas
+          servicePort: 8080
+

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-priviliged-mode
+  namespace:
+  labels:
+spec:
+  restartPolicy:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command: ["/bin/sleep", "3600"]
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        cpu: 100m
+        memory: 512Mi

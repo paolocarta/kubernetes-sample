@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp
+  namespace:
+  labels:
+spec:
+  rules:
+  - host: webapp.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: webapp
+          servicePort: 80

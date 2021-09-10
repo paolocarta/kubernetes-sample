@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace:
+  name: taas
+spec:
+  tls:
+  - hosts:
+    - taas.training.clastix.io
+    secretName: tomcat-tls-secret
+  rules:
+  - host: tomcat.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: taas
+          servicePort: 8000

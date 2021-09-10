@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: consul-ui
+spec:
+  rules:
+  - host: consul.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: consul
+          servicePort: 8500
+      - path: /metrics
+        backend:
+          serviceName: consul-metrics
+          servicePort: 9107
+

@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mongoose
+spec:
+  rules:
+  - host: mongoose.training.clastix.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: mongoose-bosh
+          servicePort: 5280
